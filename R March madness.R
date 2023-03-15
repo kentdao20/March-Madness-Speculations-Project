@@ -16,4 +16,5 @@ setwd("~/Desktop/DATA 332/March-Madness-Speculations-Project")
 #opened the csv file and proceeded in the data cleaning process
 
 df<-read.csv("2023 Tournament Data.csv")%>%
+  
   select(TEAM, KENPOM.ADJUSTED.EFFICIENCY)
