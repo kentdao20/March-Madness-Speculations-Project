@@ -24,7 +24,24 @@ colnames(df)[10]<-"B_efficiency"
 colnames(df)[11]<-"B_offense"
 colnames(df)[12]<-"B_defense"
 colnames(df)[15]<-"B_tempo"
-#colnames(13)<-"B-tempo"
+
 
 df2<-df%>%
-  select(K_efficiency,K_offense,K_defense,K_tempo,B_efficiency,B_offense,B_defense)
+  select(TEAM, K_efficiency,K_offense,K_defense,K_tempo,B_efficiency,B_offense,B_defense,B_tempo)
+
+df2$sum_efficiency<-as.numeric(df2$K_efficiency)+ as.numeric(df2$B_efficiency)
+df2$average_efficiency<-df2$sum_efficiency/2  
+df2$sum_offense<-as.numeric(df2$K_offense)+ as.numeric(df2$B_offense)
+df2$average_offense<-df2$sum_offense/2
+df2$sum_defense<-as.numeric(df2$K_defense)+ as.numeric(df2$B_defense)
+df2$average_defense<-df2$sum_defense/2
+df2$sum_tempo<-as.numeric(df2$K_tempo)+ as.numeric(df2$B_tempo)
+df2$average_tempo<-df2$sum_tempo/2
+
+#comparing them by offense
+df3<-df2[order(df2$average_offense, decreasing = TRUE),]
+
+#comparing them by defense
+df4<-df2[order(df2$average_defense, decreasing = TRUE),]
+
+
