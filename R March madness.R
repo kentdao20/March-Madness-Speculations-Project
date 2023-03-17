@@ -9,8 +9,8 @@ library(reshape2)
 library(shiny)
 rm(list=ls())
 
-#setwd("C:/Data 332 project 2/March-Madness-Speculations-Project")
-setwd("D:/DATA 332/Github Project 1/March-Madness-Speculations-Project")
+setwd("C:/Data 332 project 2/March-Madness-Speculations-Project")
+#setwd("D:/DATA 332/Github Project 1/March-Madness-Speculations-Project")
 #setwd("~/Desktop/DATA 332/March-Madness-Speculations-Project")
 
 #opened the csv file and proceeded in the data cleaning process
@@ -29,6 +29,8 @@ colnames(df)[15]<-"B_tempo"
 df2<-df%>%
   select(TEAM, K_efficiency,K_offense,K_defense,K_tempo,B_efficiency,B_offense,B_defense,B_tempo)
 
+south_df <- df2%>%
+  dplyr::filter(TEAM == "Alabama")
 df2$sum_efficiency<-as.numeric(df2$K_efficiency)+ as.numeric(df2$B_efficiency)
 df2$average_efficiency<-df2$sum_efficiency/2  
 df2$sum_offense<-as.numeric(df2$K_offense)+ as.numeric(df2$B_offense)
@@ -37,11 +39,15 @@ df2$sum_defense<-as.numeric(df2$K_defense)+ as.numeric(df2$B_defense)
 df2$average_defense<-df2$sum_defense/2
 df2$sum_tempo<-as.numeric(df2$K_tempo)+ as.numeric(df2$B_tempo)
 df2$average_tempo<-df2$sum_tempo/2
-
+df2$all_average<-(df2$average_efficiency+df2$average_offense+df2$average_defense+df2$average_tempo)/2
 #comparing them by offense
 df3<-df2[order(df2$average_offense, decreasing = TRUE),]
 
 #comparing them by defense
-df4<-df2[order(df2$average_defense, decreasing = TRUE),]
+#df4<-df2[order(df2$average_defense, decreasing = TRUE),]
+
+#comparing them by all average
+#df5<-df2[order(df2$all_average, decreasing = TRUE),]
+  
 
 
