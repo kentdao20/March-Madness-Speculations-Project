@@ -29,8 +29,12 @@ colnames(df)[15]<-"B_tempo"
 df2<-df%>%
   select(TEAM, K_efficiency,K_offense,K_defense,K_tempo,B_efficiency,B_offense,B_defense,B_tempo)
 
-south_df <- df2%>%
-  dplyr::filter(TEAM == "Alabama")
+south_df <- df2
+
+
+
+
+
 df2$sum_efficiency<-as.numeric(df2$K_efficiency)+ as.numeric(df2$B_efficiency)
 df2$average_efficiency<-df2$sum_efficiency/2  
 df2$sum_offense<-as.numeric(df2$K_offense)+ as.numeric(df2$B_offense)
