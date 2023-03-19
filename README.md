@@ -5,14 +5,13 @@
 
 ## Overview:
 
-Every year, March Madness is a big basketball Tournament for colleges from different conference around the USA to compete for the national championship. This Tournament is very important, as it shows who is the best of the best, and giving NBA recruit and basketball player a ground to show their skillset before the Draft. A lot of unkown name make a voice for themself through this tournament with their skillset and 
-
+Every year, March Madness is a big basketball Tournament for colleges from different conference around the USA to compete for the national championship. This Tournament is very important, as it shows who is the best of the best, and giving NBA recruit and basketball player a ground to show their skillset before the Draft. A lot of unkown name make a voice for themself through this tournament with their skillset and putting themself out for a chance to go to the NBA. Since every year, team changes their player, play style and coach, we decide to use the most recent and only 2023 data instead of historical data in this bracket to see which team will win each game and the champion.
 
 ### Data set decision:
 
 **1. March Madness 2023 Tournament data**
 
-This dataset have 68 speculations team that might get into the March Madness Tournament for the 2023 season, but at the end, base on the rating and judgement of the comittee, there are some changes that happen and some teams make it further than expected. This data was very useful, but require a lot of changes. 
+This dataset have 68 speculations team that might get into the March Madness Tournament for the 2023 season, but at the end, base on the rating and judgement of the comittee, there are some changes that happen and some teams make it further than expected. This data was very useful, but require a lot of changes. This data set has all the rating base on their performance for this year, as every year, the team changes a lot of player.
 
 
 ## Process:
