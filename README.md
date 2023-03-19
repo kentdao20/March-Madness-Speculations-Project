@@ -1,5 +1,5 @@
 # March-Madness-Speculations-Project
-# Author: Kent Dao, Sally Boutaleb, Joshua Chalachew
+##Author: Kent Dao, Sally Boutaleb, Joshua Chalachew
 
 ![image](https://user-images.githubusercontent.com/118495124/226211913-7b106287-ce1f-4a89-b5f8-36347a97f3e9.png)
 
