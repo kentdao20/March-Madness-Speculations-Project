@@ -9,8 +9,8 @@ library(reshape2)
 library(shiny)
 rm(list=ls())
 
-setwd("C:/Data 332 project 2/March-Madness-Speculations-Project")
-#setwd("D:/DATA 332/Github Project 1/March-Madness-Speculations-Project")
+#setwd("C:/Data 332 project 2/March-Madness-Speculations-Project")
+setwd("D:/DATA 332/Github Project 1/March-Madness-Speculations-Project")
 #setwd("~/Desktop/DATA 332/March-Madness-Speculations-Project")
 
 #opened the csv file and proceeded in the data cleaning process
@@ -27,38 +27,52 @@ colnames(df)[15]<-"B_tempo"
 
 
 df2<-df%>%
-  select(TEAM, K_efficiency,K_offense,K_defense,K_tempo,B_efficiency,B_offense,B_defense,B_tempo)
+  select(SEED, TEAM, K_efficiency,K_offense,K_defense,K_tempo,B_efficiency,B_offense,B_defense,B_tempo)
 
-<<<<<<< HEAD
-south_df <- df2
-
+#I added seed so we can know which team is which seed, but we need to fix since there has been ranking changes
 
 
+#df2$sum_efficiency<-as.numeric(df2$K_efficiency)+ as.numeric(df2$B_efficiency)
+#df2$average_efficiency<-df2$sum_efficiency/2  
+df2$sum_offense<-as.numeric(df2$K_offense)
+df2$average_offense<-df2$sum_offense
+df2$sum_defense<-as.numeric(df2$K_defense)
+df2$average_defense<-df2$sum_defense
+#df2$sum_tempo<-as.numeric(df2$K_tempo)+ as.numeric(df2$B_tempo)
+#df2$average_tempo<-df2$sum_tempo/2
+df2$K_average<-(df2$average_offense+df2$average_defense)/2
 
 
-=======
- 
-  
->>>>>>> bf3ee90b1cf8e94e19b90754c49a48d24ef17750
-df2$sum_efficiency<-as.numeric(df2$K_efficiency)+ as.numeric(df2$B_efficiency)
-df2$average_efficiency<-df2$sum_efficiency/2  
-df2$sum_offense<-as.numeric(df2$K_offense)+ as.numeric(df2$B_offense)
-df2$average_offense<-df2$sum_offense/2
-df2$sum_defense<-as.numeric(df2$K_defense)+ as.numeric(df2$B_defense)
-df2$average_defense<-df2$sum_defense/2
-df2$sum_tempo<-as.numeric(df2$K_tempo)+ as.numeric(df2$B_tempo)
-df2$average_tempo<-df2$sum_tempo/2
-df2$all_average<-(df2$average_efficiency+df2$average_offense+df2$average_defense+df2$average_tempo)/2
+#1st: We will only take average of off and def
+#2nd: We will compare  their tempo and ...
 
 south_df <- df2%>%
+  
   filter((TEAM == "Alabama") | (TEAM =="Texas A&M-Corpus Christi") | (TEAM == "Maryland") | (TEAM == "West Virginia") | (TEAM == "San Diego State") | 
            (TEAM == "College of Charleston") | (TEAM == "Virginia") | (TEAM == "Furman") | (TEAM == "Creighton") | (TEAM == "North Carolina State") | 
-           (TEAM == "Baylor") | (TEAM =="UC Irvine") | (TEAM == "Missouri") | (TEAM == "Utah Valley") | (TEAM == "Arizona") | (TEAM == "Arizona State"))
+           (TEAM == "Baylor") | (TEAM =="UCSB") | (TEAM == "Missouri") | (TEAM == "Utah St.") | (TEAM == "Arizona") | (TEAM == "Princeton"))
 
 
+east_df <- df2%>%
+  
+  filter((TEAM == "Purdue")|(TEAM == "Fairleigh Dickinson")|(TEAM == "Memphis")|(TEAM == "Duke")|
+           (TEAM == "Oral Roberts")|(TEAM == "Florida Atlantic")|(TEAM == "Tennessee")|(TEAM == "Louisiana")|
+           (TEAM == "Kentucky")|(TEAM == "Providence")|(TEAM == "Kansas State")|(TEAM == "Montana")|
+           (TEAM == "Michigan State")|(TEAM == "USC")|(TEAM == "Marquette")|(TEAM == "Vermont"))
+#Compare by effienciecy as it is the best scale, not the average rating
+midwest_df <- df2%>%
+  filter((TEAM == "Houston")|(TEAM == "Northern Ky.")|(TEAM == "Iowa")|(TEAM == "Auburn")|
+           (TEAM == "Miami (FLA.)")|(TEAM == "Drake")|(TEAM == "Indiana")|(TEAM == "Kent St.")|
+           (TEAM == "Iowa State")|(TEAM == "Pittsburgh")|(TEAM == "Xavier")|(TEAM == "Kennesaw St.")|
+           (TEAM == "Texas A&M")|(TEAM == "Penn St.")|(TEAM == "Texas")|(TEAM == "Colgate"))
 
+west_df<- df2%>%
+  filter((TEAM == "Kansas")|(TEAM == "Howard")|(TEAM == "Arkansas")|(TEAM == "Illinois")|
+           (TEAM == "Iona")|(TEAM == "Connecticut")|(TEAM == "VCU")|(TEAM == "St. Mary's (CA)")|
+           (TEAM == "TCU")|(TEAM == "Arizona State")|(TEAM == "Gonzaga")|(TEAM == "Grand Canyon")|
+           (TEAM == "UNC Asheville")|(TEAM == "UCLA")|(TEAM == "Boise State")|(TEAM == "Northwestern"))
 
-#comparing them by offense
+#comparing them by efficiency
 df3<-df2[order(df2$average_offense, decreasing = TRUE),]
 
 #comparing them by defense
