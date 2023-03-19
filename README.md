@@ -22,6 +22,10 @@ This dataset have 68 speculations team that might get into the March Madness Tou
 
 For March Madness 2023 Tournament data set, we have to include extra 11 teams that was not inside the data sets that made it to March Madness. We go and research on Kenpom and Batrovik websites for these data and put it manually in  
 
-**2. Clean data
+**2. Clean data**
 
 In R, as we already see that there are no N/A columna and all the data are being used in the same unit, we change the name of each column for easier reading and put the teams into the conference where they belong, using the select and filter to put the right column
+
+**3. Separate by each region**
+
+Each region have their own 16 seed ranking base on their potential and how they are performing in the most recent game.
