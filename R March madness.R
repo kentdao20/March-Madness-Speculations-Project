@@ -7,11 +7,13 @@ library(dplyr)
 library(stringr)
 library(reshape2)
 library(shiny)
+library(ggplot2)
+library(patchwork)
 rm(list=ls())
 
 #setwd("C:/Data 332 project 2/March-Madness-Speculations-Project")
-setwd("D:/DATA 332/Github Project 1/March-Madness-Speculations-Project")
-#setwd("~/Desktop/DATA 332/March-Madness-Speculations-Project")
+#setwd("D:/DATA 332/Github Project 1/March-Madness-Speculations-Project")
+setwd("~/Desktop/DATA 332/March-Madness-Speculations-Project")
 
 #opened the csv file and proceeded in the data cleaning process
 
@@ -52,14 +54,13 @@ south_df <- df2%>%
            (TEAM == "College of Charleston") | (TEAM == "Virginia") | (TEAM == "Furman") | (TEAM == "Creighton") | (TEAM == "North Carolina State") | 
            (TEAM == "Baylor") | (TEAM =="UCSB") | (TEAM == "Missouri") | (TEAM == "Utah St.") | (TEAM == "Arizona") | (TEAM == "Princeton"))
 
-
 east_df <- df2%>%
-  
   filter((TEAM == "Purdue")|(TEAM == "Fairleigh Dickinson")|(TEAM == "Memphis")|(TEAM == "Duke")|
            (TEAM == "Oral Roberts")|(TEAM == "Florida Atlantic")|(TEAM == "Tennessee")|(TEAM == "Louisiana")|
            (TEAM == "Kentucky")|(TEAM == "Providence")|(TEAM == "Kansas State")|(TEAM == "Montana")|
            (TEAM == "Michigan State")|(TEAM == "USC")|(TEAM == "Marquette")|(TEAM == "Vermont"))
-#Compare by effienciecy as it is the best scale, not the average rating
+
+#Compare by efficiency as it is the best scale, not the average rating
 midwest_df <- df2%>%
   filter((TEAM == "Houston")|(TEAM == "Northern Ky.")|(TEAM == "Iowa")|(TEAM == "Auburn")|
            (TEAM == "Miami (FLA.)")|(TEAM == "Drake")|(TEAM == "Indiana")|(TEAM == "Kent St.")|
@@ -80,6 +81,24 @@ df3<-df2[order(df2$average_offense, decreasing = TRUE),]
 
 #comparing them by all average
 #df5<-df2[order(df2$all_average, decreasing = TRUE),]
-  
 
 
+#ggplot for south, east, Midwest, and west df to compare the sum offense and defense for each region's teams
+
+p1 <- ggplot(south_df, aes(x = sum_offense, y = sum_defense)) +
+  geom_point() +
+  labs(title = "offense vs defense for South Region Teams")
+
+p2 <- ggplot(east_df, aes(x = sum_offense, y = sum_defense)) +
+  geom_point() +
+  labs(title = "offense vs defense for East Region Teams")
+
+p3 <- ggplot(midwest_df, aes(x = sum_offense, y = sum_defense)) +
+  geom_point() +
+  labs(title = "offense vs defense for Midwest Region Teams")
+
+p4 <- ggplot(west_df, aes(x = sum_offense, y = sum_defense)) +
+  geom_point() +
+  labs(title = "offense vs defense for West Region Teams")
+
+p1 + p2 + p3 + p4 + plot_layout(ncol = 2, nrow = 2)
