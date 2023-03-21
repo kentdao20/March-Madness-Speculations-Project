@@ -87,18 +87,19 @@ df3<-df2[order(df2$average_offense, decreasing = TRUE),]
 
 p1 <- ggplot(south_df, aes(x = sum_offense, y = sum_defense)) +
   geom_point() +
-  labs(title = "offense vs defense for South Region Teams")
+  labs(title = "off vs def for South Region Teams")
 
 p2 <- ggplot(east_df, aes(x = sum_offense, y = sum_defense)) +
   geom_point() +
-  labs(title = "offense vs defense for East Region Teams")
+  labs(title = "off vs def for East Region Teams")
 
 p3 <- ggplot(midwest_df, aes(x = sum_offense, y = sum_defense)) +
   geom_point() +
-  labs(title = "offense vs defense for Midwest Region Teams")
+  labs(title = "off vs def for Midwest Region Teams")
 
 p4 <- ggplot(west_df, aes(x = sum_offense, y = sum_defense)) +
   geom_point() +
-  labs(title = "offense vs defense for West Region Teams")
+  labs(title = "off vs def for West Region Teams")
 
 p1 + p2 + p3 + p4 + plot_layout(ncol = 2, nrow = 2)
+
