@@ -42,4 +42,7 @@ First, We created four separate ggplot objects, one for each region's dataframe 
 
 We've filtered the top 4 teams from each region based on their total score calculated from their average defense, offense, and K_average. Then we combined them into a Sweet16 dataframe by using the rbind function to stack the filtered dataframes on top of each other.
 
+<img width="1406" alt="Screenshot 2023-03-25 at 4 54 22 PM" src="https://user-images.githubusercontent.com/118493723/227744235-037e868c-95ba-4302-b0b9-a13b991777b9.png">
 
+
+<img width="95" alt="Screenshot 2023-03-25 at 4 55 35 PM" src="https://user-images.githubusercontent.com/118493723/227744237-1e245b6c-5e3e-49f7-9f54-f8667d2bc299.png">
