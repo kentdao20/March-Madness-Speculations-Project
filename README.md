@@ -44,3 +44,13 @@ We've filtered the top 4 teams from each region based on their total score calcu
 
 <img width="644" alt="Screenshot 2023-03-25 at 5 00 51 PM" src="https://user-images.githubusercontent.com/118493723/227744391-8411a38b-0042-4149-95ae-9887da196298.png">
 
+**2. Boxplot** 
+
+We generated two box plots showing the distribution of average defense and average offense for the Sweet 16 teams by region. 
+
+Together, these two plots provide a visual comparison of the distribution of average defense and average offense across the different regions in the Sweet 16.
+
+![4e7cbe83-2db8-4bd5-82c7-2ffbbcfa276d](https://user-images.githubusercontent.com/118493723/227747178-406e1754-a566-4985-95ae-12939a9f757e.png)
+
+![94a92b95-df16-4aa6-ab7d-53d600dedf35](https://user-images.githubusercontent.com/118493723/227747184-b3bc57e5-da46-4b98-93c7-15b70602c2ec.png)
+
