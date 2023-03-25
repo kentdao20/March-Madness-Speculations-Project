@@ -119,6 +119,24 @@ Sweet16 <- rbind(Top4_east, Top4_south, Top4_west, Top4_midwest)
 df_sweet16 <- Sweet16 %>%
   select(SEED, TEAM, average_defense, average_offense, K_average, total_score)
 
+df_sweet16$region <- c(rep("East", 4), rep("West", 4), rep("Midwest", 4), rep("South", 4))
+ 
+#boxplot of average defense for each region 
+ggplot(df_sweet16, aes(x = region, y = average_defense)) +
+  geom_boxplot() +
+  labs(x = "Region", y = "Average Defense",
+       title = "Box Plot of Average Defense by Region in Sweet 16") +
+  theme_bw()
+
+
+#boxplot of average offense for each region  
+ggplot(df_sweet16, aes(x = region, y = average_offense)) +
+  geom_boxplot() +
+  labs(x = "Region", y = "Average offense",
+       title = "Box Plot of Average offense by Region in Sweet 16") +
+  theme_bw()
+
+
 find_highest_score <- function(south_df, K_average) {
   max_score <- max(south_df[[K_average]])
   highest_score_row <- south_df[south_df[[K_average]] == max_score, "TEAM"]
