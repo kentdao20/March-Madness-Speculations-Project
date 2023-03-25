@@ -76,6 +76,45 @@ west_df<- df2%>%
 #comparing them by efficiency
 df3<-df2[order(df2$average_offense, decreasing = TRUE),]
 
+#ggplot for south, east, Midwest, and west df to compare the sum offense and defense for each region's teams
+
+p1 <- ggplot(south_df, aes(x = sum_offense, y = sum_defense)) +
+  geom_point() +
+  labs(title = "offense vs defense for South Region Teams")
+
+p2 <- ggplot(east_df, aes(x = sum_offense, y = sum_defense)) +
+  geom_point() +
+  labs(title = "offense vs defense for East Region Teams")
+
+p3 <- ggplot(midwest_df, aes(x = sum_offense, y = sum_defense)) +
+  geom_point() +
+  labs(title = "offense vs defense for Midwest Region Teams")
+
+p4 <- ggplot(west_df, aes(x = sum_offense, y = sum_defense)) +
+  geom_point() +
+  labs(title = "offense vs defense for West Region Teams")
+
+p1 + p2 + p3 + p4 + plot_layout(ncol = 2, nrow = 2)
+
+#making the sweet 16 list 
+
+#filtering east region 
+east_df$total_score <- rowSums(east_df[, c("average_defense", "average_offense", "K_average")])
+Top4_east <- head(east_df[order(-east_df$total_score),], 4)
+
+#filtering west region 
+west_df$total_score <- rowSums(west_df[, c("average_defense", "average_offense", "K_average")])
+Top4_west <- head(east_df[order(-west_df$total_score),], 4)
+
+#filtering Midwest region 
+midwest_df$total_score <- rowSums(midwest_df[, c("average_defense", "average_offense", "K_average")])
+Top4_midwest <- head(midwest_df[order(-midwest_df$total_score),], 4)
+
+#filtering south region 
+south_df$total_score <- rowSums(south_df[, c("average_defense", "average_offense", "K_average")])
+Top4_south <- head(east_df[order(-south_df$total_score),], 4)
+
+Sweet16 <- rbind(Top4_east, Top4_south, Top4_west, Top4_midwest)
 
 
 
@@ -120,14 +159,6 @@ find_highest_score <- function(west_df, K_average) {
 
 # Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(west_df, "K_average")
-
-
-
-
-
-
-
-
 
 
 
