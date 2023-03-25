@@ -30,7 +30,7 @@ In R, as we already see that there are no N/A columna and all the data are being
 
 Each region have their own 16 seed ranking base on their potential and how they are performing in the most recent game.
 
-**4. Comparing the teams selected by region 
+**4. Comparing the teams selected by region** 
 
 First, We created four separate ggplot objects, one for each region's dataframe (South, East, Midwest, and West) with the x-axis representing the sum of offense and the y-axis representing the sum of defense for each team in that region. Then, each ggplot object is customized with a title using the labs() function. Finally, the four plots are combined using the + operator, and arranged in a 2x2 grid using plot_layout(). The resulting output will show a scatter plot for each region, comparing the sum of offense and defense for each team in that region. The grid layout makes it easy to compare the four plots side-by-side.
 
