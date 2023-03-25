@@ -112,7 +112,7 @@ Top4_midwest <- head(midwest_df[order(-midwest_df$total_score),], 4)
 
 #filtering south region 
 south_df$total_score <- rowSums(south_df[, c("average_defense", "average_offense", "K_average")])
-Top4_south <- head(east_df[order(-south_df$total_score),], 4)
+Top4_south <- head(south_df[order(-south_df$total_score),], 4)
 
 Sweet16 <- rbind(Top4_east, Top4_south, Top4_west, Top4_midwest)
 
