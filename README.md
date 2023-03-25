@@ -38,7 +38,7 @@ First, We created four separate ggplot objects, one for each region's dataframe 
 
 ## Filtering the data:
 
-**1. Sweet 16 
+**1. Sweet 16**
 
 We've filtered the top 4 teams from each region based on their total score calculated from their average defense, offense, and K_average. Then we combined them into a Sweet16 dataframe by using the rbind function to stack the filtered dataframes on top of each other.
 
