@@ -116,7 +116,8 @@ Top4_south <- head(south_df[order(-south_df$total_score),], 4)
 
 Sweet16 <- rbind(Top4_east, Top4_south, Top4_west, Top4_midwest)
 
-
+df_sweet16 <- Sweet16 %>%
+  select(SEED, TEAM, average_defense, average_offense, K_average, total_score)
 
 find_highest_score <- function(south_df, K_average) {
   max_score <- max(south_df[[K_average]])
