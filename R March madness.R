@@ -2,7 +2,7 @@
 library(tidyverse)
 library(tidytext)
 library(textdata)
-library(janeaustenr)
+#library(janeaustenr)
 library(dplyr)
 library(stringr)
 library(reshape2)
@@ -11,8 +11,8 @@ library(ggplot2)
 library(patchwork)
 rm(list=ls())
 
-#setwd("C:/Data 332 project 2/March-Madness-Speculations-Project")
-setwd("D:/DATA 332/Github Project 1/March-Madness-Speculations-Project")
+setwd("C:/Data 332 project 2/March-Madness-Speculations-Project")
+#setwd("D:/DATA 332/Github Project 1/March-Madness-Speculations-Project")
 #setwd("~/Desktop/DATA 332/March-Madness-Speculations-Project")
 
 #opened the csv file and proceeded in the data cleaning process
@@ -76,30 +76,67 @@ west_df<- df2%>%
 #comparing them by efficiency
 df3<-df2[order(df2$average_offense, decreasing = TRUE),]
 
-#comparing them by defense
-#df4<-df2[order(df2$average_defense, decreasing = TRUE),]
-
-#comparing them by all average
-#df5<-df2[order(df2$all_average, decreasing = TRUE),]
 
 
-#ggplot for south, east, Midwest, and west df to compare the sum offense and defense for each region's teams
 
-p1 <- ggplot(south_df, aes(x = sum_offense, y = sum_defense)) +
-  geom_point() +
-  labs(title = "off vs def for South Region Teams")
+find_highest_score <- function(south_df, K_average) {
+  max_score <- max(south_df[[K_average]])
+  highest_score_row <- south_df[south_df[[K_average]] == max_score, "TEAM"]
+  cat("The winner in the south by an average of", max_score, "is", highest_score_row, "\n")
+}
 
-p2 <- ggplot(east_df, aes(x = sum_offense, y = sum_defense)) +
-  geom_point() +
-  labs(title = "off vs def for East Region Teams")
+# Call the find_highest_score function with the modulus dataset and the "score" column
+find_highest_score(south_df, "K_average")
 
-p3 <- ggplot(midwest_df, aes(x = sum_offense, y = sum_defense)) +
-  geom_point() +
-  labs(title = "off vs def for Midwest Region Teams")
 
-p4 <- ggplot(west_df, aes(x = sum_offense, y = sum_defense)) +
-  geom_point() +
-  labs(title = "off vs def for West Region Teams")
 
-p1 + p2 + p3 + p4 + plot_layout(ncol = 2, nrow = 2)
+find_highest_score <- function(east_df, K_average) {
+  max_score <- max(east_df[[K_average]])
+  highest_score_row <- east_df[east_df[[K_average]] == max_score, "TEAM"]
+  cat("The winner in the east by an average of", max_score, "is", highest_score_row, "\n")
+}
 
+# Call the find_highest_score function with the modulus dataset and the "score" column
+find_highest_score(east_df, "K_average")
+
+
+find_highest_score <- function(midwest_df, K_average) {
+  max_score <- max(midwest_df[[K_average]])
+  highest_score_row <- midwest_df[midwest_df[[K_average]] == max_score, "TEAM"]
+  cat("The winner in the midwest by an average of", max_score, "is", highest_score_row, "\n")
+}
+
+# Call the find_highest_score function with the modulus dataset and the "score" column
+find_highest_score(midwest_df, "K_average")
+
+
+
+
+find_highest_score <- function(west_df, K_average) {
+  max_score <- max(west_df[[K_average]])
+  highest_score_row <- west_df[west_df[[K_average]] == max_score, "TEAM"]
+  cat("The winner in the west by an average of", max_score, "is", highest_score_row, "\n")
+}
+
+# Call the find_highest_score function with the modulus dataset and the "score" column
+find_highest_score(west_df, "K_average")
+
+
+
+
+
+
+
+
+
+
+
+# Create an empty table with columns for names and variables
+#south_winner <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
+
+# Add new observations to the table using rbind
+#south_winner <- rbind(south_winner, c("winner", "Texas_am"))
+#south_winner <- rbind(south_winner, c("winner", "value3"))
+
+# Store the table in the environment
+#assign("south_winner", south_winner)
