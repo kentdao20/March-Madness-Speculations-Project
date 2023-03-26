@@ -2,7 +2,6 @@
 library(tidyverse)
 library(tidytext)
 library(textdata)
-#library(janeaustenr)
 library(dplyr)
 library(stringr)
 library(reshape2)
@@ -182,11 +181,87 @@ find_highest_score(west_df, "K_average")
 
 
 # Create an empty table with columns for names and variables
-#south_winner <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
+winners <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
 
 # Add new observations to the table using rbind
-#south_winner <- rbind(south_winner, c("winner", "Texas_am"))
-#south_winner <- rbind(south_winner, c("winner", "value3"))
-
+winners <- rbind(winners, c("winner", "winners"))
+winners <- rbind(winners, c("winner of south", "Texas A&M-Corpus Christi"))
+winners <- rbind(winners, c("winner of east", "Fairleigh Dickinson"))
+winners <- rbind(winners, c("winner of midwest", "Iowa"))
+winners <- rbind(winners, c("winner of west", "Gonzaga"))
 # Store the table in the environment
-#assign("south_winner", south_winner)
+assign("winners", winners)
+
+winners <- winners[-1,]
+
+#who will face who?
+semi <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
+semi<-rbind(semi, c("semi finals","semi finals"))
+semi<-rbind(semi, c("first match", "Texas A&M-Corpus Christi vs Iowa"))
+semi<-rbind(semi, c("second match","Fairlegh Dickinson vs Gonzaga"))
+assign("semi", semi)
+semi<-semi[-1,]
+
+#comparison
+semi_finals<-df2%>%
+  filter((TEAM =="Texas A&M-Corpus Christi") | (TEAM =="Iowa") | (TEAM == "Fairleigh Dickinson") | (TEAM == "Gonzaga"))
+
+semi_finals<-semi_finals[order(semi_finals$K_average, decreasing = TRUE),]
+
+#finalist
+final <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
+final<-rbind(final, c("finals","finals"))
+final<-rbind(final, c("final match","Fairlegh Dickinson vs Texas A&M-Corpus Christi"))
+assign("final", final)
+final<-final[-1,]
+
+finals<-df2%>%
+  filter((TEAM =="Texas A&M-Corpus Christi") | (TEAM =="Fairlegh Dickinson"))
+
+done <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
+done<-rbind(done, c("finals","finals"))
+done<-rbind(done, c("march madness winner", "Texas A&M-Corpus Christi"))
+assign("the winner", done)
+done<-done[-1,]
+
+
+
+dataset<-df_sweet16
+column_names<-colnames(dataset) #for input selections
+
+
+#Shinny App
+
+ui<-fluidPage( 
+  
+  titlePanel(title = "March Madness"),
+  h4('who will win?'),
+  
+  fluidRow(
+    column(2,
+           selectInput('X', 'Choose X',column_names,column_names[1]),
+           selectInput('Y', 'Choose Y',column_names,column_names[3]),
+           selectInput('Splitby', 'Split By', column_names,column_names[7])
+    ),
+    column(4,plotOutput('plot_01')),
+    column(6,DT::dataTableOutput("table_01", width = "100%"))
+  )
+  
+  
+)
+
+server<-function(input,output){
+  
+  output$plot_01 <- renderPlot({
+    ggplot(dataset,aes_string(x=input$X,y=input$Y))+
+      geom_point()+
+      geom_smooth()
+    
+  })
+  
+  output$table_01<-DT::renderDataTable(dataset[,c(input$X,input$Y,input$Splitby)],options = list(pageLength = 4))
+}
+
+shinyApp(ui=ui, server=server)
+
+
