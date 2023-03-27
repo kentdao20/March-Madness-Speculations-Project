@@ -54,3 +54,103 @@ Together, these two plots provide a visual comparison of the distribution of ave
 
 ![94a92b95-df16-4aa6-ab7d-53d600dedf35](https://user-images.githubusercontent.com/118493723/227747184-b3bc57e5-da46-4b98-93c7-15b70602c2ec.png)
 
+## The selection process:
+
+Through this series of functions we tried to find the team with the highest value of a given variable ("K_average") in different regions of a sports tournament. The functions take as input a dataframe for each region (south_df, east_df, midwest_df, west_df) and the name of the variable to be evaluated. The output of each function is a message that indicates the winner for that region. Then, we created an empty table called "winners" with columns for names and variables. It adds new observations to the table using rbind to indicate the winners of each region and the finalists of the tournament. 
+After that, we created another table called "semi" to indicate the semi-final matches, and another one called "final" to indicate the final match. These tables are also stored in the environment.
+Finally, the code uses the dataset "df2" to filter the teams that made it to the semi-finals and finals based on their region and the "K_average" variable. The resulting teams are ordered by their K_average score in decreasing order. Then, through a table called "done" we indicated the winner of the tournament based on the results of the final match; the table is stored in the environment as "the winner".
+
+find_highest_score <- function(south_df, K_average) {
+  max_score <- max(south_df[[K_average]])
+  highest_score_row <- south_df[south_df[[K_average]] == max_score, "TEAM"]
+  cat("The winner in the south by an average of", max_score, "is", highest_score_row, "\n")
+}
+
+# Call the find_highest_score function with the modulus dataset and the "score" column
+find_highest_score(south_df, "K_average")
+
+
+
+find_highest_score <- function(east_df, K_average) {
+  max_score <- max(east_df[[K_average]])
+  highest_score_row <- east_df[east_df[[K_average]] == max_score, "TEAM"]
+  cat("The winner in the east by an average of", max_score, "is", highest_score_row, "\n")
+}
+
+# Call the find_highest_score function with the modulus dataset and the "score" column
+find_highest_score(east_df, "K_average")
+
+
+find_highest_score <- function(midwest_df, K_average) {
+  max_score <- max(midwest_df[[K_average]])
+  highest_score_row <- midwest_df[midwest_df[[K_average]] == max_score, "TEAM"]
+  cat("The winner in the midwest by an average of", max_score, "is", highest_score_row, "\n")
+}
+
+# Call the find_highest_score function with the modulus dataset and the "score" column
+find_highest_score(midwest_df, "K_average")
+
+
+
+
+find_highest_score <- function(west_df, K_average) {
+  max_score <- max(west_df[[K_average]])
+  highest_score_row <- west_df[west_df[[K_average]] == max_score, "TEAM"]
+  cat("The winner in the west by an average of", max_score, "is", highest_score_row, "\n")
+}
+
+# Call the find_highest_score function with the modulus dataset and the "score" column
+find_highest_score(west_df, "K_average")
+
+
+
+# Create an empty table with columns for names and variables
+winners <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
+
+# Add new observations to the table using rbind
+winners <- rbind(winners, c("winner", "winners"))
+winners <- rbind(winners, c("winner of south", "Texas A&M-Corpus Christi"))
+winners <- rbind(winners, c("winner of east", "Fairleigh Dickinson"))
+winners <- rbind(winners, c("winner of midwest", "Iowa"))
+winners <- rbind(winners, c("winner of west", "Gonzaga"))
+# Store the table in the environment
+assign("winners", winners)
+
+winners <- winners[-1,]
+
+#who will face who?
+semi <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
+semi<-rbind(semi, c("semi finals","semi finals"))
+semi<-rbind(semi, c("first match", "Texas A&M-Corpus Christi vs Iowa"))
+semi<-rbind(semi, c("second match","Fairlegh Dickinson vs Gonzaga"))
+assign("semi", semi)
+semi<-semi[-1,]
+
+#comparison
+semi_finals<-df2%>%
+  filter((TEAM =="Texas A&M-Corpus Christi") | (TEAM =="Iowa") | (TEAM == "Fairleigh Dickinson") | (TEAM == "Gonzaga"))
+
+semi_finals<-semi_finals[order(semi_finals$K_average, decreasing = TRUE),]
+
+#finalist
+final <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
+final<-rbind(final, c("finals","finals"))
+final<-rbind(final, c("final match","Fairlegh Dickinson vs Texas A&M-Corpus Christi"))
+assign("final", final)
+final<-final[-1,]
+
+finals<-df2%>%
+  filter((TEAM =="Texas A&M-Corpus Christi") | (TEAM =="Fairlegh Dickinson"))
+
+done <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
+done<-rbind(done, c("finals","finals"))
+done<-rbind(done, c("march madness winner", "Texas A&M-Corpus Christi"))
+assign("the winner", done)
+done<-done[-1,]
+
+
+<img width="644" alt="Screenshot 2023-03-27 at 12 53 12 AM" src="https://user-images.githubusercontent.com/118493723/227852479-141947b0-467a-4125-a628-11d71b404ca2.png">
+
+<img width="644" alt="Screenshot 2023-03-27 at 12 53 33 AM" src="https://user-images.githubusercontent.com/118493723/227852494-7ef7e6fa-f0d4-4cba-b502-51f8a90c1cbf.png">
+
+
