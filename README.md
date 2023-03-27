@@ -149,5 +149,11 @@ assign("the winner", done)
 done<-done[-1,]
 
 
+# ShinyApp 
+
+This Shiny app allows users to explore a dataset related to March Madness. The app displays a title panel and a header that asks the user to choose which team will win. We chose three select inputs, where users can choose which variables to display on the X and Y axes of a plot and how to split the data by a categorical variable. We, then,  generated a plot and a table based on the user's input. The plot shows the relationship between the two chosen variables, and the table displays the data in a tabular format with the selected variables and split by the categorical variable. 
+
+
+<img width="906" alt="Screenshot 2023-03-27 at 1 01 57 AM" src="https://user-images.githubusercontent.com/118493723/227853826-ce0852a5-0480-4e2d-aa38-9424aceb663e.png">
 
 
