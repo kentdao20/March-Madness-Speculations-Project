@@ -66,7 +66,7 @@ find_highest_score <- function(south_df, K_average) {
   cat("The winner in the south by an average of", max_score, "is", highest_score_row, "\n")
 }
 
-# Call the find_highest_score function with the modulus dataset and the "score" column
+## Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(south_df, "K_average")
 
 
@@ -77,7 +77,7 @@ find_highest_score <- function(east_df, K_average) {
   cat("The winner in the east by an average of", max_score, "is", highest_score_row, "\n")
 }
 
-# Call the find_highest_score function with the modulus dataset and the "score" column
+## Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(east_df, "K_average")
 
 
@@ -87,7 +87,7 @@ find_highest_score <- function(midwest_df, K_average) {
   cat("The winner in the midwest by an average of", max_score, "is", highest_score_row, "\n")
 }
 
-# Call the find_highest_score function with the modulus dataset and the "score" column
+## Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(midwest_df, "K_average")
 
 
@@ -99,21 +99,21 @@ find_highest_score <- function(west_df, K_average) {
   cat("The winner in the west by an average of", max_score, "is", highest_score_row, "\n")
 }
 
-# Call the find_highest_score function with the modulus dataset and the "score" column
+## Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(west_df, "K_average")
 
 
 
-# Create an empty table with columns for names and variables
+## Create an empty table with columns for names and variables
 winners <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
 
-# Add new observations to the table using rbind
+## Add new observations to the table using rbind
 winners <- rbind(winners, c("winner", "winners"))
 winners <- rbind(winners, c("winner of south", "Texas A&M-Corpus Christi"))
 winners <- rbind(winners, c("winner of east", "Fairleigh Dickinson"))
 winners <- rbind(winners, c("winner of midwest", "Iowa"))
 winners <- rbind(winners, c("winner of west", "Gonzaga"))
-# Store the table in the environment
+## Store the table in the environment
 assign("winners", winners)
 
 winners <- winners[-1,]
@@ -149,8 +149,5 @@ assign("the winner", done)
 done<-done[-1,]
 
 
-<img width="644" alt="Screenshot 2023-03-27 at 12 53 12 AM" src="https://user-images.githubusercontent.com/118493723/227852479-141947b0-467a-4125-a628-11d71b404ca2.png">
-
-<img width="644" alt="Screenshot 2023-03-27 at 12 53 33 AM" src="https://user-images.githubusercontent.com/118493723/227852494-7ef7e6fa-f0d4-4cba-b502-51f8a90c1cbf.png">
 
 
