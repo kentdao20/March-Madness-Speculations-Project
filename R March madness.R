@@ -145,8 +145,6 @@ find_highest_score <- function(south_df, K_average) {
 # Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(south_df, "K_average")
 
-
-
 find_highest_score <- function(east_df, K_average) {
   max_score <- max(east_df[[K_average]])
   highest_score_row <- east_df[east_df[[K_average]] == max_score, "TEAM"]
@@ -155,7 +153,6 @@ find_highest_score <- function(east_df, K_average) {
 
 # Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(east_df, "K_average")
-
 
 find_highest_score <- function(midwest_df, K_average) {
   max_score <- max(midwest_df[[K_average]])
@@ -166,9 +163,6 @@ find_highest_score <- function(midwest_df, K_average) {
 # Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(midwest_df, "K_average")
 
-
-
-
 find_highest_score <- function(west_df, K_average) {
   max_score <- max(west_df[[K_average]])
   highest_score_row <- west_df[west_df[[K_average]] == max_score, "TEAM"]
@@ -177,8 +171,6 @@ find_highest_score <- function(west_df, K_average) {
 
 # Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(west_df, "K_average")
-
-
 
 # Create an empty table with columns for names and variables
 winners <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
