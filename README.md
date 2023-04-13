@@ -80,13 +80,13 @@ find_highest_score <- function(east_df, K_average) {
 ## Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(east_df, "K_average")
 
-
+```r
 find_highest_score <- function(midwest_df, K_average) {
   max_score <- max(midwest_df[[K_average]])
   highest_score_row <- midwest_df[midwest_df[[K_average]] == max_score, "TEAM"]
   cat("The winner in the midwest by an average of", max_score, "is", highest_score_row, "\n")
 }
-
+```
 ## Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(midwest_df, "K_average")
 
@@ -134,6 +134,7 @@ semi_finals<-df2%>%
 semi_finals<-semi_finals[order(semi_finals$K_average, decreasing = TRUE),]
 
 #finalist
+```r
 final <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
 final<-rbind(final, c("finals","finals"))
 final<-rbind(final, c("final match","Fairlegh Dickinson vs Texas A&M-Corpus Christi"))
@@ -149,7 +150,7 @@ done<-rbind(done, c("march madness winner", "Texas A&M-Corpus Christi"))
 assign("the winner", done)
 done<-done[-1,]
 
-
+```
 # ShinyApp 
 
 This Shiny app allows users to explore a dataset related to March Madness. The app displays a title panel and a header that asks the user to choose which team will win. We chose three select inputs, where users can choose which variables to display on the X and Y axes of a plot and how to split the data by a categorical variable. We, then,  generated a plot and a table based on the user's input. The plot shows the relationship between the two chosen variables, and the table displays the data in a tabular format with the selected variables and split by the categorical variable. 
