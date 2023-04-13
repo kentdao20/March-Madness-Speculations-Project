@@ -92,13 +92,13 @@ find_highest_score(midwest_df, "K_average")
 
 
 
-
+```r
 find_highest_score <- function(west_df, K_average) {
   max_score <- max(west_df[[K_average]])
   highest_score_row <- west_df[west_df[[K_average]] == max_score, "TEAM"]
   cat("The winner in the west by an average of", max_score, "is", highest_score_row, "\n")
 }
-
+```
 ## Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(west_df, "K_average")
 
@@ -108,6 +108,7 @@ find_highest_score(west_df, "K_average")
 winners <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
 
 ## Add new observations to the table using rbind
+```r
 winners <- rbind(winners, c("winner", "winners"))
 winners <- rbind(winners, c("winner of south", "Texas A&M-Corpus Christi"))
 winners <- rbind(winners, c("winner of east", "Fairleigh Dickinson"))
@@ -117,7 +118,7 @@ winners <- rbind(winners, c("winner of west", "Gonzaga"))
 assign("winners", winners)
 
 winners <- winners[-1,]
-
+```
 #who will face who?
 ```r
 semi <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
@@ -128,11 +129,12 @@ assign("semi", semi)
 semi<-semi[-1,]
 ```
 #comparison
+```r
 semi_finals<-df2%>%
   filter((TEAM =="Texas A&M-Corpus Christi") | (TEAM =="Iowa") | (TEAM == "Fairleigh Dickinson") | (TEAM == "Gonzaga"))
 
 semi_finals<-semi_finals[order(semi_finals$K_average, decreasing = TRUE),]
-
+```
 #finalist
 ```r
 final <- data.frame(name = character(), var1 = character(), stringsAsFactors = FALSE)
