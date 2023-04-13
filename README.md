@@ -70,13 +70,13 @@ find_highest_score <- function(south_df, K_average) {
 find_highest_score(south_df, "K_average")
 
 
-
+```r
 find_highest_score <- function(east_df, K_average) {
   max_score <- max(east_df[[K_average]])
   highest_score_row <- east_df[east_df[[K_average]] == max_score, "TEAM"]
   cat("The winner in the east by an average of", max_score, "is", highest_score_row, "\n")
 }
-
+```
 ## Call the find_highest_score function with the modulus dataset and the "score" column
 find_highest_score(east_df, "K_average")
 
